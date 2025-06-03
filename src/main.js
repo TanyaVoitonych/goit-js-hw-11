@@ -9,7 +9,6 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('.form');
-const gallery = document.querySelector('.gallery');
 
 form.addEventListener('submit', async event => {
   event.preventDefault();
@@ -29,14 +28,17 @@ form.addEventListener('submit', async event => {
 
     if (data.hits.length === 0) {
       iziToast.info({
-        message: 'Sorry, there are no images matching your search query. Please try again!',
+        message:
+          'Sorry, there are no images matching your search query. Please try again!',
       });
       return;
     }
 
     createGallery(data.hits);
   } catch (error) {
-    iziToast.error({ message: 'Something went wrong. Please try again later.' });
+    iziToast.error({
+      message: 'Something went wrong. Please try again later.',
+    });
   } finally {
     hideLoader();
   }
